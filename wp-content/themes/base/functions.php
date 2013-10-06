@@ -144,8 +144,8 @@ function generate_new_post($blocks, $speed, $score, $clicks, $jorgeClicks){
     $current_user = wp_get_current_user();
     $current_user_id = $current_user->ID;
 
-    $post_title = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on Click On Jorge!";
-    $post_content = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on <a href='" . get_bloginfo('url') . "'>Click On Jorge</a> with " . $blocks . " boxes and a speed of  " . $speed . ". How about you try to beat this score!";
+    $post_title = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . number_format($score) . " points on Click On Jorge!";
+    $post_content = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . number_format($score) . " points on <a href='" . get_bloginfo('url') . "'>Click On Jorge</a> with " . $blocks . " boxes and a speed of  " . $speed . ". How about you try to beat this score!";
     
     $post = array(
         //'ID'             => [ <post id> ], //Are you updating an existing post?
