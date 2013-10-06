@@ -55,7 +55,7 @@
 			<img id="3-icon" src="<?php bloginfo('template_url'); ?>/img/3.png" style="display: none;" />
 		</div>
 		<div id="instructions-dialog" title="Intstructions" class="modal">
-			<p>In <strong>20 seconds</strong> attempt to <strong>click</strong> on my face as many times as you can.</p>
+			<p>In <strong>20 seconds</strong> attempt to <strong>click</strong> on the <strong>black</strong> squares with my face as many times as you can.</p>
 			<img id="instructions_image" src="<?php bloginfo('template_url'); ?>/img/instructions.png" alt="Click On Jorge's Face"/>
 			<h4>Speed: <span id="stat_speed_modal"></span></h4>
 			<div id="speed-slider"></div>
