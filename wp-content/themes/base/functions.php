@@ -106,15 +106,15 @@ function get_page_metatags(){
     if(!is_single()) {
         $title = get_bloginfo('name') . " · " . get_bloginfo('description');
         //$description = get_bloginfo('description');
-        $description = "Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to click on my face as many times as possible and get a your name in the high scores. It hurts my face, but it's worth it.";
         $url = get_bloginfo('url');
     }
     else {
-        $title = get_the_title($post->ID) . " | " . get_bloginfo('name') . " | " . get_bloginfo('description');;
+        $title = get_the_title($post->ID) . " | " . get_bloginfo('name') . " · " . get_bloginfo('description');;
         $description = get_the_excerpt($post->ID);
         $url = get_permalink($post->ID);
     }
     $img = get_bloginfo('template_url') . "/img/clickjorge/me_with_clickc_share.png";
+    $description = "Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to click on my face as many times as possible and get a your name in the high scores. It hurts my face, but it's worth it.";
     $string = <<<END
         <!-- Regular meta tags -->
         <meta name="description" content="$description" />
