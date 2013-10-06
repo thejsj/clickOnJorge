@@ -10,6 +10,15 @@
 						<a href="<?php echo get_permalink( 198 ) ?>" id="leaderboard-link" title="High Scores" class="icon-bars">
 							<span class="text">High Scores</span>
 						</a>
+						<?php try { ?>
+						<a href="<?php echo get_permalink(2037); ?>" title="FAQs" class="icon-layers-alt">
+							<span class="text">FAQs</span>
+						</a>
+						<?php } catch (Exception $e) { try { ?>
+						<a href="<?php echo get_permalink(2045); ?>" title="FAQs" class="icon-layers-alt">
+							<span class="text">FAQs</span>
+						</a>
+						<?php } catch (Exception $e) {}  } ?>
 						<a href="<?php echo wp_logout_url( home_url() ); ?>" title="Logout" class="icon-user-3">
 							<span class="text">Logout</span>
 						</a>
@@ -50,6 +59,7 @@
 			<img id="instructions_image" src="<?php bloginfo('template_url'); ?>/img/instructions.png" alt="Click On Jorge's Face"/>
 			<h4>Speed: <span id="stat_speed_modal"></span></h4>
 			<div id="speed-slider"></div>
+			<!-- <input type="range" name="slider-1" id="slider-1" min="0" max="100" value="50"> -->
 			<h4>Blocks: <span id="stat_items_modal"></span></h4>
 			<div id="items-slider"></div>
 		</div>

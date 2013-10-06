@@ -114,13 +114,21 @@ var CanvasBlocks = function(game, sounds){
       /*  Canvas
       ******************/
       if (window.devicePixelRatio > 1) {
+        $mainCanvas = jQuery('#main-canvas');
 
-        this.canvas.setAttribute('width', this.canvas.width);
-        this.canvas.setAttribute('height', this.canvas.height);
-
+        var hidefCanvasWidth = $mainCanvas.attr('width');
+        var hidefCanvasHeight = $mainCanvas.attr('height');
+        var hidefCanvasCssWidth = hidefCanvasWidth;
+        var hidefCanvasCssHeight = hidefCanvasHeight;
+    
+        $mainCanvas.attr('width', hidefCanvasWidth * window.devicePixelRatio);
+        $mainCanvas.attr('height', hidefCanvasHeight * window.devicePixelRatio);
+        $mainCanvas.css('width', hidefCanvasCssWidth);
+        $mainCanvas.css('height', hidefCanvasCssHeight);
         this.ctx = this.canvas.getContext('2d');
-        this.ctx.scale(2, 2);
-        
+        this.ctx.scale(window.devicePixelRatio, window.devicePixelRatio); 
+
+        alert('This Game Does Not Work Well in Retina Displays. Play At Your Own Risk.')
       }
       else {
         this.ctx = this.canvas.getContext('2d');

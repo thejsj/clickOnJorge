@@ -178,6 +178,12 @@ var GameInterface = function(game){
 		});
 	}
 
+	this.mobileWarning = function(){
+		if(jQuery(document).width() < 768){
+			alert("Warning: This game does not work well in mobile devices. Play at your own risk!");
+		}
+	}
+
 	this.updateAllStats = function(){
 		var that = this;
 		// NOTE: This Doesn't work in IE apparently... :( .innerText  = ?;

@@ -27,6 +27,7 @@ Notice: Undefined index: action in /home/thejsj/public_html/2013/shareshare/wp-c
 // jQuery
 wp_enqueue_script( 'jquery-ui-dialog',  array( 'jquery' ) );
 wp_enqueue_script( 'jquery-ui-slider',  array( 'jquery' ) );
+wp_enqueue_script( 'jquery-touch',  get_bloginfo('template_url') . '/js/jquery-touchpunch.min.js', array('jquery', 'jquery-ui-slider', 'jquery-ui-dialog'), false,true);
 
 // embed the javascript file that makes the AJAX request
 wp_enqueue_script( 'timbre', get_bloginfo('template_url') . '/js/timbre.js', array('jquery'), false,true);

@@ -2,10 +2,6 @@
 /* TODO
 
 + Browser Testing. 
-	
-	- Safari: Width of Menu Items not set correclty
-
-	- Firefox: Margin on top Menu Items not correct
 
 	- IE10?
 
@@ -38,6 +34,12 @@ DONE:
 - Optimize For Retina
 
 - Sound on Animation
+
+- Browser Testing. 
+	
+	- Safari: Width of Menu Items not set correclty
+
+	- Firefox: Margin on top Menu Items not correct
 
 Won't Do: 
 
@@ -73,6 +75,9 @@ var interval_activated = true;
 function initGame(){
 	// Make all the appropriate dialogs and sliders
 	// then, bring up a dialog box with the instructions and settings
+
+	gameInterface.mobileWarning();
+
 	gameInterface.init(function(){
 		// Calculate the number of blocks (x and y)
 		// Create Gradients, block objects, and bind canvas element

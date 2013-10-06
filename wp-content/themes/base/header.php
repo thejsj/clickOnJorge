@@ -7,6 +7,7 @@
         <?php echo get_page_metatags(); ?>
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" />
+       <!--  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" /> -->
         <link rel="stylesheet/less" type="text/css" href="<?php bloginfo('template_url') ?>/style.less" />
         <script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/modernizr.js" ></script>
         <script type="text/javascript">
