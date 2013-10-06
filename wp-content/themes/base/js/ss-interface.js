@@ -209,7 +209,7 @@ var GameInterface = function(game){
 
 	this.stopGame = function(jorgeClicks, finalScore){
 		jQuery("#final_jorge_clicks_modal").text(jorgeClicks);
-		jQuery("#final_score_modal").text(finalScore);
+		jQuery("#final_score_modal").text(addCommas(finalScore));
 		jQuery(".left-top-container").removeClass('activated');
 	}
 
