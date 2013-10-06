@@ -144,8 +144,8 @@ function generate_new_post($blocks, $speed, $score, $clicks, $jorgeClicks){
     $current_user = wp_get_current_user();
     $current_user_id = $current_user->ID;
 
-    $post_title = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on ShareShare!";
-    $post_content = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on <a href='" . get_bloginfo('url') . "'>ShareShare</a> with " . $blocks . " boxes and a speed of  " . $speed . ". How about you try to beat this score!";
+    $post_title = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on Click On Jorge!";
+    $post_content = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on <a href='" . get_bloginfo('url') . "'>Click On Jorge</a> with " . $blocks . " boxes and a speed of  " . $speed . ". How about you try to beat this score!";
     
     $post = array(
         //'ID'             => [ <post id> ], //Are you updating an existing post?
@@ -195,7 +195,10 @@ function show_user_name(){
     return $current_user->user_firstname;
 }
 
+class MyException extends Exception { }
+
 function did_post_make_high_core($new_post_id){
+
     $args = array(
         'posts_per_page'   => 100,
         'offset'           => 0,
@@ -204,14 +207,15 @@ function did_post_make_high_core($new_post_id){
         'suppress_filters' => true );
 
     $all_posts = get_posts( $args );
+
     $all_scores = array();
     for($i = 0; $i < count($all_posts); $i++){
         $this_post = (object) array(); 
         $this_post->ID = $all_posts[$i]->ID;
-        $this_post->ID = $all_posts[$i]->ID;
         $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
         array_push($all_scores, $this_post);
     }
+    //throw new MyException(var_dump($all_posts));
     function sort_objects_by_total($a, $b) {
         if($a->score == $b->score){ return 0 ; }
         return ($a->score < $b->score) ? -1 : 1;
@@ -219,8 +223,10 @@ function did_post_make_high_core($new_post_id){
 
     usort($all_scores, 'sort_objects_by_total');
     $all_scores = array_reverse($all_scores);
-    for($i = 1; $i < count($all_scores); $i++){
+    //
+    for($i = 0; $i < count($all_scores); $i++){
         if($all_scores[$i]->ID == $new_post_id){
+           // throw new MyException(count($all_scores));
             return $i;
         }
     }
@@ -241,19 +247,7 @@ function get_high_scores(){
         $this_post->ID = $all_posts[$i]->ID;
 
         $this_post->user = $all_posts[$i]->post_author;
-        $current_user = get_userdata( $this_post->user );
-        $this_post->user_firstname = $current_user->user_firstname;
-        $this_post->user_lastname = $current_user->user_lastname;
-        $this_post->user_name = $this_post->user_firstname . " " . $this_post->user_lastname;
-        $this_post->user_url = $current_user->user_url;
-
-        if(!empty($this_post->user_url) || $this_post->user_url != ""){
-            $this_post->user_link = '<a href="' . $this_post->user_url . '">' . $this_post->user_name . '</a>';
-        }
-        else {
-            $this_post->user_link = $this_post->user_name;
-        }
-
+        $this_post->user_link = getUserLink($this_post->user);
         $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
         $this_post->jorgeClicks = floatval(get_post_meta( $this_post->ID, "jorgeClicks", true ));
         $this_post->speed = floatval(get_post_meta( $this_post->ID, "speed", true ));
@@ -271,6 +265,35 @@ function get_high_scores(){
     $all_scores = array_reverse($all_scores);
     // Push them out of her
     return $all_scores;
+}
+
+function getSingleScore($post_id){
+    $this_post = (object) array(); 
+    $this_post->ID = $post_id;
+    $post_query = get_post($this_post->ID); 
+    $this_post->user_link = getUserLink($post_query->post_author);
+    $this_post->rank = did_post_make_high_core($this_post->ID);
+    $this_post->score = get_post_meta( $this_post->ID, "score", true ); 
+    $this_post->jorgeClicks = get_post_meta( $this_post->ID, "jorgeClicks", true ); 
+    $this_post->clicks = get_post_meta( $this_post->ID, "clicks", true ); 
+    $this_post->speed = get_post_meta( $this_post->ID, "speed", true ); 
+    $this_post->blocks = get_post_meta( $this_post->ID, "blocks", true ); 
+    return $this_post;
+}
+
+function getUserLink($post_author){
+    $current_user = get_userdata( $post_author );
+    $this_post->user_firstname = $current_user->user_firstname;
+    $this_post->user_lastname = $current_user->user_lastname;
+    $this_post->user_name = $this_post->user_firstname . " " . $this_post->user_lastname;
+    $this_post->user_url = $current_user->user_url;
+
+    if(!empty($this_post->user_url) || $this_post->user_url != ""){
+        return '<a href="' . $this_post->user_url . '">' . $this_post->user_name . '</a>';
+    }
+    else {
+        return $this_post->user_name;
+    }
 }
 
 function showSiteRequirementNotMetMessage(){

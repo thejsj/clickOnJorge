@@ -1,14 +1,9 @@
-<?php
-/*
-Template Name: High Scores Page
-*/
-?>
 <?php get_header(); ?>
         
        	<a href="<?php bloginfo('url'); ?>">
        		<h1 id="header-logo"><?php bloginfo('name'); ?></h1>
        	</a>
-        <div id="primary" class="site-content">
+        <div id="primary" class="site-content single">
 			<div id="content" role="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -19,43 +14,44 @@ Template Name: High Scores Page
 							<?php endif; ?>
 							<h1 class="entry-title"><?php the_title(); ?></h1>
 						</header>
-
 						<div class="entry-content">
-							
-
-
-							<!-- Display High Scores -->
-							<?php $high_scores = get_high_scores(); ?>
-							<?php if(count($high_scores)) { ?>
-								<table class="high-scores-table">
-								<tr>
-									<th>Rank</th>
-									<th>Name</th>
-									<th>Score</th>
-									<th>Jorge Clicks</th>
-									<th>Speed</th>
-									<th>Blocks</th>
-									<th>Clicks</th>
-								</tr>
-								<?php for($i = 0; $i < count($high_scores); $i++){ ?>
-									<tr>
-										<td><?php echo $i + 1; ?></td>
-										<td><?php echo $high_scores[$i]->user_link; ?></td>
-										<td><?php echo number_format($high_scores[$i]->score); ?></td>
-										<td><?php echo $high_scores[$i]->jorgeClicks; ?></td>
-										<td><?php echo $high_scores[$i]->speed; ?></td>
-										<td><?php echo $high_scores[$i]->blocks; ?></td>
-										<td><?php echo $high_scores[$i]->clicks; ?></td>
-									</tr>
-								<?php } ?>
-								</table>
-							<?php } else { ?>
-								<div class="notice">
-									<p>Sorry, no scores could be retrieved at the moment.</p>
-								</div>
-							<?php } ?>
 							<?php the_content(); ?>
+							<table class="high-scores-table">
+								<?php $this_score = getSingleScore(get_the_id())?>
+								<tr>
+									<td>Name</td>
+									<td><?php echo $this_score->user_link; ?></td>
+								</tr>
+								<tr>
+									<td>Rank</td>
+									<td><?php echo $this_score->rank + 1; ?></td>
+								</tr>
+								<tr>
+									<td>Score</td>
+									<td><?php echo number_format($this_score->score); ?></td>
+								</tr>
+								<tr>
+									<td>Jorge Clicks</td>
+									<td><?php echo $this_score->jorgeClicks; ?></td>
+								</tr>
+								<tr>
+									<td>Clicks</td>
+									<td><?php echo $this_score->clicks; ?></td>
+								</tr>
+								<tr>
+									<td>Speed</td>
+									<td><?php echo $this_score->speed; ?></td>
+								</tr>
+								<tr>
+									<td>Blocks</td>
+									<td><?php echo $this_score->blocks; ?></td>
+								</tr>
+							</table>
 							<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
+							<div style="width: 300px; margin: 0px auto;">
+								<p style="text-align: center; font-weight: bold;">Want to beat this score?</p>
+								<a href="<?php echo get_page_link(693); ?>"><button>Play Click On Jorge</button></a>
+							</div>
 						</div><!-- .entry-content -->
 						<footer class="entry-meta">
 							<p><a href="<?php echo get_permalink(2037); ?>" title="FAQs">
