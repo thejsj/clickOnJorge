@@ -96,7 +96,7 @@ function get_page_subtitle(){
         $title = get_the_title($post->ID);
     }
     else {
-        $title = get_bloginfo('$description');
+        $title = get_bloginfo('description');
     }
     echo $title;
 }
@@ -105,18 +105,16 @@ function get_page_metatags(){
     global $post;
     if(!is_single()) {
         $title = get_bloginfo('name');
-        $description = get_bloginfo('$description');
+        //$description = get_bloginfo('description');
+        $description = "Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to accomplish the impossible task on clicking on my face as many times as possible and try to get a high score. It hurts my face, but it's worth it."
         $url = get_bloginfo('url');
-        
     }
     else {
         $title = get_the_title($post->ID);
         $description = get_the_excerpt($post->ID);
         $url = get_permalink($post->ID);
     }
-
     $img = get_bloginfo('template_url') . "/img/clickjorge/me_with_clickc_share_154.png";
-
     $string = <<<END
         <!-- Regular meta tags -->
         <meta name="description" content="$description">
