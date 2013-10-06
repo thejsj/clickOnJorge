@@ -106,7 +106,7 @@ function get_page_metatags(){
     if(!is_single()) {
         $title = get_bloginfo('name');
         //$description = get_bloginfo('description');
-        $description = "Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to accomplish the impossible task on clicking on my face as many times as possible and try to get a high score. It hurts my face, but it's worth it."
+        $description = "Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to accomplish the impossible task on clicking on my face as many times as possible and try to get a high score. It hurts my face, but it's worth it.";
         $url = get_bloginfo('url');
     }
     else {
