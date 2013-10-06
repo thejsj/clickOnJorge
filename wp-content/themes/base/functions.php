@@ -106,7 +106,7 @@ function get_page_metatags(){
     if(!is_single()) {
         $title = get_bloginfo('name');
         //$description = get_bloginfo('description');
-        $description = "Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to accomplish the impossible task on clicking on my face as many times as possible and try to get a high score. It hurts my face, but it's worth it.";
+        $description = "Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to click on my face as many times as possible and get a your name in the high scores. It hurts my face, but it's worth it.";
         $url = get_bloginfo('url');
     }
     else {
@@ -117,14 +117,14 @@ function get_page_metatags(){
     $img = get_bloginfo('template_url') . "/img/clickjorge/me_with_clickc_share_154.png";
     $string = <<<END
         <!-- Regular meta tags -->
-        <meta name="description" content="$description">
+        <meta name="description" content="$description" />
         <meta property="title" content="$title" />
         <link rel="image_src" href="$img"/>
 
         <!-- Facebook Meta Tags -->    
         <meta property="og:title" content="$title" />
         <meta property="og:image" content="$img"/>   
-        <meta name="og:description" content="$description">
+        <meta name="og:description" content="$description" />
         <meta property="url" content="$url" />
         <meta property="fb:app_id " content="215782448578399" />
 
