@@ -114,7 +114,7 @@ function get_page_metatags(){
         $description = get_the_excerpt($post->ID);
         $url = get_permalink($post->ID);
     }
-    $img = get_bloginfo('template_url') . "/img/clickjorge/me_with_clickc_share_154.png";
+    $img = get_bloginfo('template_url') . "/img/clickjorge/me_with_clickc_share.png";
     $string = <<<END
         <!-- Regular meta tags -->
         <meta name="description" content="$description" />
