@@ -21,7 +21,7 @@ Template Name: High Scores Page
 						</header>
 
 						<div class="entry-content">
-							<?php the_content(); ?>
+							
 							<!-- Display High Scores -->
 							<?php $high_scores = get_high_scores(); ?>
 							<?php if(count($high_scores)) { ?>
@@ -30,7 +30,7 @@ Template Name: High Scores Page
 									<th>Rank</th>
 									<th>Name</th>
 									<th>Score</th>
-									<th>Total Time</th>
+									<th>Jorge Clicks</th>
 									<th>Speed</th>
 									<th>Blocks</th>
 									<th>Clicks</th>
@@ -40,7 +40,7 @@ Template Name: High Scores Page
 										<td><?php echo $i; ?></td>
 										<td><?php echo $high_scores[$i]->user_link; ?></td>
 										<td><?php echo number_format($high_scores[$i]->score); ?></td>
-										<td><?php echo $high_scores[$i]->time; ?> ms</td>
+										<td><?php echo $high_scores[$i]->jorgeClicks; ?></td>
 										<td><?php echo $high_scores[$i]->speed; ?></td>
 										<td><?php echo $high_scores[$i]->blocks; ?></td>
 										<td><?php echo $high_scores[$i]->clicks; ?></td>
@@ -52,6 +52,7 @@ Template Name: High Scores Page
 									<p>Sorry, no scores could be retrieved at the moment.</p>
 								</div>
 							<?php } ?>
+							<?php the_content(); ?>
 							<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
 						</div><!-- .entry-content -->
 						<footer class="entry-meta">

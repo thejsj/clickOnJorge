@@ -13,6 +13,11 @@ var GameInterface = function(game){
 
 		*******************/
 
+		// Bind Menu
+		jQuery('#menu-container a').click(function(){
+			jQuery('#menu-container').removeClass('uncollapsed');
+		});
+
 		// Set Canvas at Correct Height
 		this.canvas_height = jQuery(window).height() - jQuery("#top_menu_container").outerHeight();
 		jQuery('#main-canvas').height(this.canvas_height);
@@ -53,6 +58,7 @@ var GameInterface = function(game){
 			hide: animationTime,
 			draggable: false,
  			resizable: false,
+ 			dialogClass:'instructions-dialog',
 			open: function () {
 				jQuery('.ui-widget-overlay').hide().fadeIn(animationTime);
 			},
@@ -93,6 +99,7 @@ var GameInterface = function(game){
 			hide: animationTime,
 			draggable: false,
  			resizable: false,
+ 			dialogClass:'winning-dialog',
 			open: function () {
 				jQuery('.ui-widget-overlay').hide().fadeIn(animationTime);
 			},
@@ -179,18 +186,25 @@ var GameInterface = function(game){
 		document.getElementById("stat_items_modal").textContent  = that.currentGame.items;
 		document.getElementById("stat_speed").textContent  = that.currentGame.speed;
         document.getElementById("stat_speed_modal").textContent  = that.currentGame.speed;
-        document.getElementById("stat_clicks").textContent  = that.currentGame.clicks;
-        document.getElementById("stat_time").textContent  = that.currentGame.time_elapsed;
+        document.getElementById("stat_clicks").textContent  = that.currentGame.getClicks();
+        document.getElementById("stat_time").innerHTML  = that.currentGame.getTimeRemaining();
 		document.getElementById("stat_score").textContent  = addCommas(convertToDecimal(that.currentGame.calculateScore(), 3));
 	}
 
 	this.startGame = function(){
 		this.updateAllStats();
 		jQuery(".left-top-container ").addClass('activated');
+		jQuery('.game_stat').removeClass('time_warning');
+		jQuery('#high_score_modal')
+				.removeClass('high_score_false')
+				.removeClass('high_score_true')
+				.html('Did you make the high scores? <div class="spinner"></div>');
 	}
 
-	this.stopGame = function(){
-		jQuery(".left-top-container ").removeClass('activated');
+	this.stopGame = function(jorgeClicks, finalScore){
+		jQuery("#final_jorge_clicks_modal").text(jorgeClicks);
+		jQuery("#final_score_modal").text(finalScore);
+		jQuery(".left-top-container").removeClass('activated');
 	}
 
 	this.openWinningDialog = function(event){
@@ -211,6 +225,23 @@ var GameInterface = function(game){
 		'facebook-share-dialog', 
 		'width=626,height=436'
 		);
+	}
+
+	this.updateGameEndDialog = function(highScorePosition){
+		if(highScorePosition){
+			jQuery('#high_score_modal')
+				.addClass('high_score_true')
+				.text("You made the high scores!");
+		}
+		else {
+			jQuery('#high_score_modal')
+				.addClass('high_score_false')
+				.text("Sorry, you didn't make high scores.");
+		}
+	}
+
+	this.gameAlmostDone = function(){
+		jQuery('.game_stat').addClass('time_warning');
 	}
 
 }

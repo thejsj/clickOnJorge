@@ -26,7 +26,7 @@
 				<div class="left-top-container">
 					<div id="game_speed" class="game_stat"><span id="stat_speed" class="stat_num">0</span>Speed</div>
 					<div id="game_items" class="game_stat"><span id="stat_items" class="stat_num">0</span>Items</div>
-					<div id="game_time" class="game_stat"><span id="stat_time" class="stat_num">0</span>Time</div>
+					<div id="game_time" class="game_stat"><span id="stat_time" class="stat_num">0</span>Time Left</div>
 					<div id="game_clicks" class="game_stat"><span id="stat_clicks" class="stat_num">0</span>Clicks</div>
 					<div id="game_score" class="game_stat"><span id="stat_score" class="stat_num">0</span>Score</div>
 				</div>
@@ -46,14 +46,16 @@
 			<img id="3-icon" src="<?php bloginfo('template_url'); ?>/img/3.png" style="display: none;" />
 		</div>
 		<div id="instructions-dialog" title="Intstructions" class="modal">
-			<p>Instructions: Try to click on the Green Share button! If you win, you get to share that you won!</p>
+			<p>In <strong>20 seconds</strong> attempt to <strong>click</strong> on my face as many times as you can.</p>
+			<img id="instructions_image" src="<?php bloginfo('template_url'); ?>/img/instructions.png" alt="Click On Jorge's Face"/>
 			<h4>Speed: <span id="stat_speed_modal"></span></h4>
 			<div id="speed-slider"></div>
 			<h4>Blocks: <span id="stat_items_modal"></span></h4>
 			<div id="items-slider"></div>
 		</div>
-		<div id="winning-dialog" title="You Win!" class="modal" data-high-scores-url="<?php echo get_permalink( 198 ) ?>">
-			<p>Congrajulations! You Win! Your score will pop up any minute now!</p>
+		<div id="winning-dialog" title="Time's Up!" class="modal" data-high-scores-url="<?php echo get_permalink( 198 ) ?>">
+			<p>You had <span id="final_jorge_clicks_modal">0</span> jorge clicks and finished with a score of <span id="final_score_modal">0</span> points!</p>
+			<a href="<?php echo get_permalink( 198 ) ?>" id="high_score_modal" class="high_score_modal"></a>
 		</div>
 		<div id="losing-dialog" title="You Lost" class="modal" data-high-scores-url="<?php echo get_permalink( 198 ) ?>">
 			<p>I'm sorry, but you suck! Your score is now 0. You lost. Pretty simple, right?</p>

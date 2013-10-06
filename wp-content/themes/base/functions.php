@@ -63,18 +63,20 @@ function myajax_submit() {
         $speed = $_POST['current_speed'];
         $score = $_POST['current_score'];
         $clicks = $_POST['current_clicks'];
-        $time = $_POST['current_time'];
+        $jorgeClicks = $_POST['current_jorgeClicks'];
 
         // generate the response
-        $new_post_id  = generateNewPost($blocks, $speed, $score, $clicks, $time);
+        $new_post_id  = generate_new_post($blocks, $speed, $score, $clicks, $jorgeClicks);
         $new_post_url = get_permalink($new_post_id);
+        $madeHighScore = did_post_make_high_core($new_post_id);
         $response = json_encode(array( 
             'success' => true, 
             'blocks' => $blocks, 
             'speed' => $speed,
             'score' => $score,
             'clicks' => $clicks,
-            'time' => $time,
+            'jorgeClicks' => $jorgeClicks,
+            'made_high_score' => $madeHighScore,
             'new_post_id' => $new_post_id,
             'new_post_url' => $new_post_url,
             ));
@@ -135,14 +137,14 @@ END;
     return $string;
 }
 
-function generateNewPost($blocks, $speed, $score, $clicks, $time){
+function generate_new_post($blocks, $speed, $score, $clicks, $jorgeClicks){
     global $post; 
 
     $current_user = wp_get_current_user();
     $current_user_id = $current_user->ID;
 
     $post_title = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on ShareShare!";
-    $post_content = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on <a href='" . get_bloginfo('url') . "'>ShareShare</a> with " . $blocks . " boxes in " . $time . " seconds. How about you try to beat this score!";
+    $post_content = $current_user->user_firstname . " " . $current_user->user_lastname . " scored " . $score . " points on <a href='" . get_bloginfo('url') . "'>ShareShare</a> with " . $blocks . " boxes and a speed of  " . $speed . ". How about you try to beat this score!";
     
     $post = array(
         //'ID'             => [ <post id> ], //Are you updating an existing post?
@@ -171,8 +173,8 @@ function generateNewPost($blocks, $speed, $score, $clicks, $time){
     $unique = true;
     // Add Score
     add_post_meta($post_id, "score", $score, $unique);
-    // Adde Time
-    add_post_meta($post_id, "time", $time, $unique);
+    // Adde Jorge Clicks
+    add_post_meta($post_id, "jorgeClicks", $jorgeClicks, $unique);
     // Add Speed
     add_post_meta($post_id, "speed", $speed, $unique);
     // Add Number of Items
@@ -192,9 +194,40 @@ function show_user_name(){
     return $current_user->user_firstname;
 }
 
-function get_high_scores(){
+function did_post_make_high_core($new_post_id){
     $args = array(
         'posts_per_page'   => 100,
+        'offset'           => 0,
+        'post_type'        => 'post',
+        'post_status'      => 'publish',
+        'suppress_filters' => true );
+
+    $all_posts = get_posts( $args );
+    $all_scores = array();
+    for($i = 0; $i < count($all_posts); $i++){
+        $this_post = (object) array(); 
+        $this_post->ID = $all_posts[$i]->ID;
+        $this_post->ID = $all_posts[$i]->ID;
+        $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
+        array_push($all_scores, $this_post);
+    }
+    function sort_objects_by_total($a, $b) {
+        if($a->score == $b->score){ return 0 ; }
+        return ($a->score < $b->score) ? -1 : 1;
+    }
+
+    usort($all_scores, 'sort_objects_by_total');
+    $all_scores = array_reverse($all_scores);
+    for($i = 1; $i < count($all_scores); $i++){
+        if($all_scores[$i]->ID == $new_post_id){
+            return $i;
+        }
+    }
+}
+
+function get_high_scores(){
+    $args = array(
+        'posts_per_page'   => 50,
         'offset'           => 0,
         'post_type'        => 'post',
         'post_status'      => 'publish',
@@ -221,7 +254,7 @@ function get_high_scores(){
         }
 
         $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
-        $this_post->time = floatval(get_post_meta( $this_post->ID, "time", true ));
+        $this_post->jorgeClicks = floatval(get_post_meta( $this_post->ID, "jorgeClicks", true ));
         $this_post->speed = floatval(get_post_meta( $this_post->ID, "speed", true ));
         $this_post->blocks = floatval(get_post_meta( $this_post->ID, "blocks", true ));
         $this_post->clicks = floatval(get_post_meta( $this_post->ID, "clicks", true ));

@@ -231,6 +231,30 @@ Front Page
 @-ms-keyframes rotation5 {.mixi-frames(@from5, @to5);}
 @-o-keyframes rotation5 {.mixi-frames(@from5, @to5);}
 
+.transitionAll(@property, @duration){
+	-webkit-transition: @property @duration ease-out;
+	-moz-transition: @property @duration ease-out;
+	-o-transition: @property @duration ease-out;
+	transition: @property @duration ease-out;
+}
+
+@-webkit-keyframes spinner-rotation {
+   from {-webkit-transform: rotate(0deg);}
+   to {-webkit-transform: rotate(359deg);}
+}
+@-moz-keyframes spinner-rotation {
+   from {-moz-transform: rotate(0deg);}
+   to {-moz-transform: rotate(359deg);}
+}
+@-o-keyframes spinner-rotation {
+   from {-o-transform: rotate(0deg);}
+   to {-o-transform: rotate(359deg);}
+}
+@keyframes spinner-rotation {
+   from {transform: rotate(0deg);}
+   to {transform: rotate(359deg);}
+}
+
 .top {
 	
 	width: 100%;
@@ -398,10 +422,7 @@ Playing Mode
 		margin-left: 3px;
 		border-radius: 2px 2px 0px 0px;
 	    img {
-		    -webkit-transition: all 0.5s ease;
-		    -moz-transition: all 0.5s ease;
-		    -o-transition:all 0.5s ease;
-		    transition: all 0.5s ease;
+		    .transitionAll(all, 500ms);
 			height: 42px;
 			width: auto !important;
 			&:hover {
@@ -433,10 +454,7 @@ Playing Mode
 			position: absolute; // Mobile
 			top: 56px; // Mobile
 			right: 0px; // Mobile
-			-webkit-transition: height 300ms ease-out; // Mobile
-			-moz-transition: height 300ms ease-out; // Mobile
-			-o-transition: height 300ms ease-out; // Mobile
-			transition: height 300ms ease-out; // Mobile
+			.transitionAll(height, 300ms);
 			height: 0px;
 			overflow: hidden;
 			&.uncollapsed {
@@ -484,11 +502,9 @@ Playing Mode
 		border-bottom: 1px solid #fff;
 		position: absolute;
 		margin-left: 77px;
-		-webkit-transition: all 600ms ease-out;
-		-moz-transition: all 600ms ease-out;
-		-o-transition: all 600ms ease-out;
-		transition: all 600ms ease-out;
+		.transitionAll(height, 300ms);
 		&.activated {
+			.transitionAll(height, 300ms);
 			height: 55px;
 			border-color: #aaa;
 		}
@@ -507,8 +523,18 @@ Playing Mode
 		height: 31px;
 		border-radius: 4px;
 		background: #f2f2f2; //#5BE9C1; //#666;
-		&#game_score {
+		&#game_score, &#game_time,  {
 			display: inline-block;
+		}
+		&.time_warning {
+			background: #c22;
+			color: #900;
+			.transitionAll(all, 2500ms);
+			.stat_num  {
+				color: #f33;
+				text-shadow: 0px 0px 1px #f00;
+				
+			}
 		}
 		.stat_num {
 			display: block;
@@ -525,12 +551,6 @@ Playing Mode
 Sharing Buttons 
 
 *************************/
-
-.ui-dialog {
-	padding: 25px;
-	outline: none;
-	width: 260px !important;
-}
 
 .modal {
 	display: none;
@@ -621,7 +641,7 @@ Pages
 	margin: 10px auto;
 	padding: 20px 0px 40px;
 	background-color: #fff;
-	h1 {
+	h1, h2, h3, h4 {
 		color: #aaa;
 		text-transform: uppercase;
 		font-weight: normal;
@@ -630,13 +650,30 @@ Pages
 		text-shadow: 1px 1px 1px #eee;
 	/*	border-bottom: 1px solid #eee;*/
 		padding: 10px;
-		font-size: 1.1em;
 		margin-top: 0px;
+	}
+	h1 {
+		font-size: 1.3em;
+	}
+	h2 {
+		font-size: 1.1em;
+	}
+	h3 {
+		font-size: 0.9em;
+	}
+	h4 {
+		font-size: 0.7em;
 	}
 	p {
 		max-width: 400px;
 		margin: 1.5em auto;
 		font-size: 10px;
+		color: #444;
+	}
+	.entry-content p {
+		max-width: 400px;
+		margin: 1.5em auto;
+		font-size: 14px;
 		color: #444;
 	}
 	.notice p {
@@ -649,6 +686,7 @@ Pages
 		border-collapse: collapse;
 		margin: 0px auto;
 		box-shadow: 0px 0px 10px #ddd;
+		margin-bottom: 30px;
 		tr:nth-child(odd) {
 			background-color: #f7f7f7;
 		}
@@ -693,13 +731,13 @@ Pages
 	margin: 20px auto 0px;
 }
 
-footer.entry-meta p {
+#primary footer.entry-meta p {
 	color: #999;
 	font-size: 9px;
 	text-transform: uppercase;
 	letter-spacing: 0.5em;
 	text-align: center;
-	margin: 2em;
+	margin: 4em auto 1em;
 	a {
 		text-decoration: none;
 	}
@@ -813,31 +851,99 @@ jQuery Slider
 	background-color: rgba(255,255,255,0.95);
 }
 
-
-/*ui-widget ui-state-default ui-corner-all ui-button-icon-only */
-
 .ui-button.ui-dialog-titlebar-close {
 	display: none;
 }
 
-.ui-dialog-content h4 {
-	color: #999;
-	text-align: center; 
-	font-size: 0.9em;
-	letter-spacing: 0.3em;
-	display: block;
-	text-transform: uppercase;
-	font-weight: 300;
-	margin-bottom: 8px;
-}
+.ui-dialog-content 
 
 .ui-slider-horizontal .ui-slider-range-min {
 	background: #5be9c1;
 }
 
-.ui-dialog button {
-	display: block; 
-	margin: 20px auto;
+.ui-dialog {
+	padding: 25px;
+	outline: none;
+	width: 260px !important;
+	height: 260px !important;
+	position: absolute !important;
+	top: 0px !important;
+	left: 0px !important;
+	display: block;
+	bottom: 0px !important;
+	right: 0px !important;
+	margin: auto;
+	text-align: center;
+	h4 {
+		color: #999;
+		text-align: center; 
+		font-size: 0.9em;
+		letter-spacing: 0.3em;
+		display: block;
+		text-transform: uppercase;
+		font-weight: 300;
+		margin-bottom: 8px;
+	}
+	button {
+		display: block; 
+		margin: 20px auto;
+	}
+	span {
+		font-weight: bold;
+	}
+	.high_score_modal {
+		color: #999;
+		text-align: center;
+		display: block;
+		background-color: #f1f1f1;
+		padding: 10px;
+		text-decoration: none;
+		border: solid 1px #ccc;
+		border-radius: 3px;
+		.transitionAll(all, 2000ms);
+		@spinnerBorder: 3px;
+		.spinner {
+			height: 6px;
+			width: 6px;
+			margin:0 auto;
+			position:static;
+			-webkit-animation: spinner-rotation .6s infinite linear;
+			-moz-animation: spinner-rotation .6s infinite linear;
+			-o-animation: spinner-rotation .6s infinite linear;
+			animation: spinner-rotation .6s infinite linear;
+			border: @spinnerBorder solid #ddd;
+			border-radius: 100%;
+			display: inline-block;
+			margin-left: 5px;
+		}
+		.spinner:before {
+			content:"";
+			display:block;
+			position:absolute;
+			left:-@spinnerBorder;
+			top:-@spinnerBorder;
+			height:100%;
+			width:100%;
+			border: @spinnerBorder solid transparent;
+			border-top: @spinnerBorder solid #999;
+			border-radius:100%;
+		}
+		&.high_score_true {
+			color: #2a2;
+			background-color: #cec;
+			border: solid 1px #2a2;
+			.transitionAll(all, 2000ms);
+		}
+		&.high_score_false {
+			color: #f33;
+			background-color: #ecc;
+			border: solid 1px #f33;
+			.transitionAll(all, 2000ms);
+		}
+	}
+	#instructions_image {
+		display: none;
+	}
 }
 .ui-dialog-titlebar {
 	text-align: center;
@@ -860,6 +966,13 @@ jQuery Slider
 
 @media all and (min-width: 768px) {
 
+	.ui-dialog.instructions-dialog {
+		height: 500px !important;
+		#instructions_image {
+			display: inline;
+		}
+	}
+
 	#primary {
 		width: 520px;
 		padding: 20px 20px 40px 20px;
@@ -872,50 +985,44 @@ jQuery Slider
 			display: inline-block;
 		}
 		.right-top-container {
-		float: right;
-		padding: 10px;
-		color: #999;
-		font-size: 12px;
-		.mobile-menu {
-			display: none;
-		}
-		#menu-container {
-			position: static; // Mobile
-			-webkit-transition: height 300ms ease-out;// Desktop
-			-moz-transition: height 300ms ease-out;// Desktop
-			-o-transition: height 300ms ease-out;// Desktop
-			transition: height 300ms ease-out;// Desktop
-			height: auto;
-			overflow: visible;
-			a {
-				padding: 6px 7px; // Desktop
-				display: inline-block; // Desktop
-				border: 0px; 
-				&:first-child {
-					border-top: 0px;// Mobile
-				}
-				.text{
-					width: 0px; // Desktop		
-					display: none;			
-					-webkit-transition: width 100ms ease-out;// Desktop
-				    -moz-transition: width 100ms ease-out;// Desktop
-				    -o-transition: width 100ms ease-out;// Desktop
-				    transition: width 100ms ease-out;// Desktop
-				}
-				&:hover .text {
+			float: right;
+			padding: 10px;
+			color: #999;
+			font-size: 12px;
+		// .mobile-menu {
+		// 	display: none;
+		// }
+	// 	#menu-container {
+	// 		position: static; // Mobile
+	// 		.transitionAll(height, 300ms);
+	// 		height: auto;
+	// 		overflow: visible;
+	// 		a {
+	// 			padding: 6px 7px; // Desktop
+	// 			display: inline-block; // Desktop
+	// 			border: 0px; 
+	// 			&:first-child {
+	// 				border-top: 0px;// Mobile
+	// 			}
+	// 			.text{
+	// 				width: 0px; // Desktop		
+	// 				display: none;			
+	// 				.transitionAll(width, 100ms);
+	// 			}
+	// 			&:hover .text {
 
-				}
-				&.icon-refresh:hover .text{
-					width: 61px; // Desktop
-				}
-				&.icon-bars:hover .text{ // icon-numbered-list
-					width: 87px; // Desktop
-				}
-				&.icon-user-3:hover .text{
-					width: 55px; // Desktop
-				}
-			}
+	// 			}
+	// 			&.icon-refresh:hover .text{
+	// 				width: 61px; // Desktop
+	// 			}
+	// 			&.icon-bars:hover .text{ // icon-numbered-list
+	// 				width: 87px; // Desktop
+	// 			}
+	// 			&.icon-user-3:hover .text{
+	// 				width: 55px; // Desktop
+	// 			}
+	// 		}
+	// 	}
 		}
-	}
 	}
 }

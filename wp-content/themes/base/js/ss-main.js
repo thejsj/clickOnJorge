@@ -9,8 +9,6 @@
 
 	- IE10?
 
-+ Sound on Animation
-
 + Mobile: Doesn't set canvas to correct height
 
 + Mobile: On Click Doesn't Work... 
@@ -38,6 +36,8 @@ DONE:
 - Make All Images 100px by 100px. All should display correctly
 
 - Optimize For Retina
+
+- Sound on Animation
 
 Won't Do: 
 
@@ -112,23 +112,23 @@ jQuery(document).on("gameStart",function(){
 		interval_activated = true;
 		updateLoopTimer = setInterval(function(){
 			if(interval_activated){
-				currentGame.setTopTime();
-				if(currentGame.calculateScore()){
+				currentGame.calculateScore();
+				if(currentGame.setTopTime()){
 					gameInterface.updateAllStats();
 				}
 				else {
 					try {
-		                jQuery( "body" ).trigger("gameEnd");
-		                jQuery( "body" ).trigger("gameLose");
-		            }
-		            catch(err){
-		                console.log("trying to dispatchEvent")
-		                console.log(err);
-		            }
+						jQuery( "body" ).trigger("gameEnd");
+						jQuery( "body" ).trigger("timeRanOut");
+					}
+					catch(err){
+						console.log("trying to dispatchEvent")
+						console.log(err);
+					}
 				}
 			}
-		},100); 
-	}, 3, true);
+		},100);
+	}, 3, true, true);
 });
 
 
@@ -147,6 +147,7 @@ jQuery(document).on("highlithedBlockChange",function(){
 
 // On Game End
 jQuery(document).on("gameEnd", function(event){
+	gameInterface.stopGame(currentGame.jorgeClicks, currentGame.calculateScore());
 	interval_activated = false;
 	// Stop updating time and changing higlighted blocks
 	clearInterval(updateLoopTimer);
@@ -159,10 +160,9 @@ jQuery(document).on("gameEnd", function(event){
 	blocks.turnOff();
 });
 
-// On game Win
-jQuery(document).on("gameWin", function(event){
+jQuery(document).on("timeRanOut", function(event){
+	sounds.lose();
 	// Animate the blocks one time
-	//gameInterface.openWinningDialog();
 	blocks.animateBlocksFromRightToLeft(function(){
 		// Open a dialog saying that you won!
 		gameInterface.openWinningDialog();
@@ -170,20 +170,25 @@ jQuery(document).on("gameWin", function(event){
 		// Reset time started, scores, random key, etc
 		currentGame.startNewGame();
 		currentGame.stopGame(); 
-	}, 0, false);
+	}, 0, false, false);
 });
 
-// On Game Lose
-jQuery(document).on("gameLose",function(){
-	sounds.lose();
-	gameInterface.openLosingDialog();
-	// Reset time started, scores, random key, etc
-	currentGame.startNewGame();
-	currentGame.stopGame(); 
+jQuery(document).on('game5secondsLeft', function(){
+	if(interval_activated){
+		sounds.gameAlmostDone();
+		for(var i = 1; i < 5; i++){
+			setTimeout(function(){
+				if(interval_activated){
+					sounds.gameAlmostDone();
+				}
+			}, i * 1000);
+		}
+		gameInterface.gameAlmostDone();
+	}
 });
 
 document.onkeypress = function(){
-
+	jQuery( "body" ).trigger("gameEnd");
 };
 
 
@@ -199,14 +204,25 @@ function callAjax(callback){
 		current_blocks: currentGame.items,
 		current_speed : currentGame.speed,  
 		current_score : currentGame.calculateScore(),
-		current_time : currentGame.time_elapsed,
 		current_clicks : currentGame.clicks, 
+		current_jorgeClicks : currentGame.jorgeClicks, 
  
 		// other parameters can be added along with "action"
 		message : MyAjax.message
 	},
 	function( response ) {
-		callback(response["new_post_url"]);
+		console.log(response);
+		// Let's create some uneeded anticipation!
+		setTimeout(function(){
+			if(response['made_high_score'] < 50){
+				gameInterface.updateGameEndDialog(true);
+				sounds.newHighScore();
+			}
+			else {
+				gameInterface.updateGameEndDialog(false);
+			}
+			callback(response["new_post_url"]);
+		}, 3000);
 	});
 };
 

@@ -173,12 +173,13 @@ var CanvasBlocks = function(game, sounds){
       this.blocks[i].drawBlock();
     }
   }
-  this.animateBlocksFromRightToLeft = function(callback, animations, showNumbers){
+  this.animateBlocksFromRightToLeft = function(callback, animations, showNumbers, playSound){
     
     // Animations
     this.animationIndex = this.numElementsX; 
     this.animations = (animations === undefined) ? 3 : animations; 
     this.showNumbers = (showNumbers === undefined) ? true : showNumbers; 
+    playSound = (playSound === undefined) ? true : playSound; 
     function animate(that){
       // Loop through all blocks
       for(var i = 0; i < that.blocks.length; i++){
@@ -195,7 +196,7 @@ var CanvasBlocks = function(game, sounds){
         that.animationIndex--;
         setTimeout(function(){
           animate(that); 
-        }, 20);
+        }, 40);
       }
       else {
         that.animationIndex = that.numElementsX;
@@ -204,16 +205,19 @@ var CanvasBlocks = function(game, sounds){
           that.blocks[i].animationHighlight = 0;
         }
         if(that.animations > 0){
+          if(playSound){ this.sounds.animationSound() };
           that.animations--;
           animate(that);
         }
         else {
+          if(playSound){ this.sounds.startGame() };
           if(callback !== undefined){
             callback();
           }
         }
       }
     }
+    //if(playSound){ this.sounds.animationSound() };
     animate(this);
   }
 
@@ -274,7 +278,6 @@ var CanvasBlocks = function(game, sounds){
     var thisCanvas = this;
 
     // Desktop
-
     this.body.onmousemove = function(event){
       thisCanvas.checkHover(getCursorPosition("#main-canvas", event)); 
     };
@@ -358,14 +361,11 @@ var CanvasBlocks = function(game, sounds){
               boxFillStyle = thisGame.gradients['main'];
             }
             else {
-              thisGame.sounds.win();
+              thisGame.sounds.jorgeClick();
               this.imageToShow = 4;
               boxFillStyle =  thisGame.gradients['click'];
               this.click = false; 
-              //clearInterval(loopTimer);
-              // Dispath On Block Highlithed Changec
-              jQuery(document).trigger("gameEnd");
-              jQuery(document).trigger("gameWin");
+              thisGame.game.clickOnJorge();
             }
           }
         }
