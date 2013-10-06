@@ -107,13 +107,13 @@ function get_page_metatags(){
         $title = get_bloginfo('name');
         $description = get_bloginfo('$description');
         $url = get_bloginfo('url');
-        $img = "http://thejsj.com/2013/shareshare/wp-content/themes/base/img/ss-logo-background.png";
+        $img = get_bloginfo('template_url') . "/wp-content/themes/base/img/ss-logo-background.png";
     }
     else {
         $title = get_the_title($post->ID);
         $description = get_the_excerpt($post->ID);
         $url = get_permalink($post->ID);
-        $img = "http://thejsj.com/2013/shareshare/wp-content/themes/base/img/ss-logo-background.png";
+        $img = get_bloginfo('template_url') . "/wp-content/themes/base/img/ss-logo-background.png";
     }
     $string = <<<END
         <!-- Regular meta tags -->
