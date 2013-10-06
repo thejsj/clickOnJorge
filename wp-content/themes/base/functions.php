@@ -115,7 +115,7 @@ function get_page_metatags(){
         $url = get_permalink($post->ID);
     }
 
-    $img = get_bloginfo('template_url') . "/wp-content/themes/base/img/clickjorge/me_with_clickc_share_154.png";
+    $img = get_bloginfo('template_url') . "/img/clickjorge/me_with_clickc_share_154.png";
 
     $string = <<<END
         <!-- Regular meta tags -->
