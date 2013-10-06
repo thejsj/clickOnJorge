@@ -23,7 +23,7 @@ var ShareShareGameInstance= function() {
     this.max_speed = 100;
 
     this.start_time = null;
-    this.game_duration = 1000 * 7; // 20 Seconds
+    this.game_duration = 1000 * 20; // 20 Seconds
     this.time_remaining = this.game_duration; 
     this.time_elapsed = 0;
     this.under_five_seconds_left = false; 
