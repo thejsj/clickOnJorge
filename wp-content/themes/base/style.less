@@ -305,25 +305,25 @@ Front Page
 			}
 		}
 	}	
-	h1 {
+	h1, h2, h3, h4 {
 		color: #fff;
-		font-size: 4em;
 		text-shadow: 1px 1px 2px #000;
 		text-align: center; 
 		margin: 0.2em;
 		margin-bottom: 0em;
 		line-height: 0.9em;
 	}
-	.description {
-		color: #fff;
-		font-size: 1.1em;
-		text-align: center; 
-		margin: 0.1em;
-		margin-top: 0.4em;
-		text-shadow: 1px 1px #aaa;
+	h1 {
+		font-size: 4em;
+	}
+	h3 {
+		font-size: 3em;
+	}
+	h4 {
+		font-size: 2em;
 		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		font-weight: 300;
+		letter-spacing: 0.1em;
+		font-weight: 200;
 	}
 	.plugin #providers .provider #button_facebook {
 		background-color: red;
@@ -373,13 +373,40 @@ Front Page
 			width: 100%;
 		}
 	}
+	a {
+		color: #000;
+		text-decoration: none;
+		&:hover {
+			color: #5BE9C1;
+		}
+	}
 	p {
 		text-align: center;
-		font-size: 10px;
+		font-size: 14px;
 		color: #fff;
-		font-weight: bold;
 		text-shadow: 1px 1px #bbb;
+		margin: 0px auto;
 		margin-top: 10px;
+		max-width: 300px;
+		&.small {
+			font-size: 10px;
+			font-weight: bold;
+		}
+		&.description {
+			color: #fff;
+			font-size: 1.1em;
+			text-align: center; 
+			margin: 0.1em auto;
+			margin-top: 0.4em;
+			text-shadow: 1px 1px #aaa;
+			text-transform: uppercase;
+			letter-spacing: 0.3em;
+			font-weight: 300;
+		}
+		.name {
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+		}
 	}
 
 }

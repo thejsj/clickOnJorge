@@ -197,6 +197,12 @@ function show_user_name(){
 
 class MyException extends Exception { }
 
+//throw new MyException(var_dump($all_posts));
+function sort_objects_by_total($a, $b) {
+    if($a->score == $b->score){ return 0 ; }
+    return ($a->score < $b->score) ? -1 : 1;
+}
+
 function did_post_make_high_core($new_post_id){
 
     $args = array(
@@ -215,11 +221,6 @@ function did_post_make_high_core($new_post_id){
         $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
         array_push($all_scores, $this_post);
     }
-    //throw new MyException(var_dump($all_posts));
-    function sort_objects_by_total($a, $b) {
-        if($a->score == $b->score){ return 0 ; }
-        return ($a->score < $b->score) ? -1 : 1;
-    }
 
     usort($all_scores, 'sort_objects_by_total');
     $all_scores = array_reverse($all_scores);
@@ -232,7 +233,7 @@ function did_post_make_high_core($new_post_id){
     }
 }
 
-function get_high_scores(){
+function get_high_scores($get_first_score=false){
     $args = array(
         'posts_per_page'   => 10000, // Is there a better way to do this? 
         'offset'           => 0,
@@ -243,26 +244,19 @@ function get_high_scores(){
     $all_posts = get_posts( $args );
     $all_scores = array();
     for($i = 0; $i < count($all_posts); $i++){
-        $this_post = (object) array(); 
-        $this_post->ID = $all_posts[$i]->ID;
-        $this_post->user = $all_posts[$i]->post_author;
-        $this_post->user_link = getUserLink($this_post->user);
-        $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
-        $this_post->jorgeClicks = floatval(get_post_meta( $this_post->ID, "jorgeClicks", true ));
-        $this_post->speed = floatval(get_post_meta( $this_post->ID, "speed", true ));
-        $this_post->blocks = floatval(get_post_meta( $this_post->ID, "blocks", true ));
-        $this_post->clicks = floatval(get_post_meta( $this_post->ID, "clicks", true ));
+        $this_post = getSingleScore($all_posts[$i]->ID);
         array_push($all_scores, $this_post); 
-    }
-    function sort_objects_by_total($a, $b) {
-        if($a->score == $b->score){ return 0 ; }
-        return ($a->score < $b->score) ? -1 : 1;
     }
 
     usort($all_scores, 'sort_objects_by_total');
     $all_scores = array_reverse($all_scores);
     // Push them out of her
-    return $all_scores;
+    if(!$get_first_score){
+        return $all_scores;
+    }
+    else {
+        return $all_scores[0];
+    }
 }
 
 function getSingleScore($post_id){
@@ -271,11 +265,11 @@ function getSingleScore($post_id){
     $post_query = get_post($this_post->ID); 
     $this_post->user_link = getUserLink($post_query->post_author);
     $this_post->rank = did_post_make_high_core($this_post->ID);
-    $this_post->score = get_post_meta( $this_post->ID, "score", true ); 
-    $this_post->jorgeClicks = get_post_meta( $this_post->ID, "jorgeClicks", true ); 
-    $this_post->clicks = get_post_meta( $this_post->ID, "clicks", true ); 
-    $this_post->speed = get_post_meta( $this_post->ID, "speed", true ); 
-    $this_post->blocks = get_post_meta( $this_post->ID, "blocks", true ); 
+    $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true )); 
+    $this_post->jorgeClicks = floatval(get_post_meta( $this_post->ID, "jorgeClicks", true )); 
+    $this_post->clicks = floatval(get_post_meta( $this_post->ID, "clicks", true )); 
+    $this_post->speed = floatval(get_post_meta( $this_post->ID, "speed", true )); 
+    $this_post->blocks = floatval(get_post_meta( $this_post->ID, "blocks", true )); 
     return $this_post;
 }
 
