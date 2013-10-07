@@ -243,19 +243,17 @@ function get_high_scores(){
     $all_posts = get_posts( $args );
     $all_scores = array();
     for($i = 0; $i < count($all_posts); $i++){
-        $this_post = (object) array(); 
-        $this_post->ID = $all_posts[$i]->ID;
-
-        $this_post->user = $all_posts[$i]->post_author;
-        $this_post->user_link = getUserLink($this_post->user);
-        $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
-        $this_post->jorgeClicks = floatval(get_post_meta( $this_post->ID, "jorgeClicks", true ));
-        $this_post->speed = floatval(get_post_meta( $this_post->ID, "speed", true ));
-        $this_post->blocks = floatval(get_post_meta( $this_post->ID, "blocks", true ));
-        $this_post->clicks = floatval(get_post_meta( $this_post->ID, "clicks", true ));
-        //if($this_post->user != 4){ // Hong
+        $this_post = getSingleScore($all_posts[$i]->ID); 
+        // $this_post = (object) array(); 
+        // $this_post->ID = $all_posts[$i]->ID;
+        // $this_post->user = $all_posts[$i]->post_author;
+        // $this_post->user_link = getUserLink($this_post->user);
+        // $this_post->score = floatval(get_post_meta( $this_post->ID, "score", true ));
+        // $this_post->jorgeClicks = floatval(get_post_meta( $this_post->ID, "jorgeClicks", true ));
+        // $this_post->speed = floatval(get_post_meta( $this_post->ID, "speed", true ));
+        // $this_post->blocks = floatval(get_post_meta( $this_post->ID, "blocks", true ));
+        // $this_post->clicks = floatval(get_post_meta( $this_post->ID, "clicks", true ));
         array_push($all_scores, $this_post); 
-        //}
     }
     function sort_objects_by_total($a, $b) {
         if($a->score == $b->score){ return 0 ; }
