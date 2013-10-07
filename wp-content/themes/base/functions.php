@@ -253,10 +253,9 @@ function get_high_scores(){
         $this_post->speed = floatval(get_post_meta( $this_post->ID, "speed", true ));
         $this_post->blocks = floatval(get_post_meta( $this_post->ID, "blocks", true ));
         $this_post->clicks = floatval(get_post_meta( $this_post->ID, "clicks", true ));
-        if($this_post->user != 4){ // Hong
-           array_push($all_scores, $this_post); 
-        }
-        
+        //if($this_post->user != 4){ // Hong
+        array_push($all_scores, $this_post); 
+        //}
     }
     function sort_objects_by_total($a, $b) {
         if($a->score == $b->score){ return 0 ; }
