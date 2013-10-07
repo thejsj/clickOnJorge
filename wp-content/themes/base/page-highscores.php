@@ -21,8 +21,6 @@ Template Name: High Scores Page
 						</header>
 
 						<div class="entry-content">
-							
-
 
 							<!-- Display High Scores -->
 							<?php $high_scores = get_high_scores(); ?>

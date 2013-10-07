@@ -234,7 +234,7 @@ function did_post_make_high_core($new_post_id){
 
 function get_high_scores(){
     $args = array(
-        'posts_per_page'   => 50,
+        'posts_per_page'   => 10000, // Is there a better way to do this? 
         'offset'           => 0,
         'post_type'        => 'post',
         'post_status'      => 'publish',
