@@ -26,7 +26,7 @@
 		</span>
 		<p>Yeah, sorry but you'll need facebook for this!</p>
 
-		<?php $highest_score = get_high_scores(true); ?>
+		<!--<?php $highest_score = get_high_scores(true); ?>
 		<br/>
 		<br/>
 		<h3>Top Score</h3>
@@ -35,7 +35,7 @@
 		<p>with <?php echo number_format($highest_score->score); ?> points.</p>
 		<p><a href="<?php echo get_permalink(198); ?>" title="FAQs">
 			<span class="text">See High Scores</span>
-		</a></p>
+		</a></p>-->
 
 
 	</div>
