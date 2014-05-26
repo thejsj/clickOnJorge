@@ -7,8 +7,8 @@
         <?php echo get_page_metatags(); ?>
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" />
-        <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url') ?>/style-less-compiled.css" />
-        <script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/modernizr.js" ></script>
+        <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url') ?>/dist/css/click-on-jorge-main.css" />
+        <script type="text/javascript" src="<?php bloginfo('template_url') ?>/dist/js/header.js" ></script>
         <?php
         /* Always have wp_head() just before the closing </head>
         * tag of your theme, or you will break many plugins, which
@@ -16,6 +16,6 @@
         * as styles, scripts, and meta tags.
         */
         wp_head(); ?>
-        <link rel="icon" type="image/png" href="<?php bloginfo('template_url') ?>/img/clickjorge/favicon.png" />
+        <link rel="icon" type="image/png" href="<?php bloginfo('template_url') ?>/dist/img/clickjorge/favicon.png" />
     </head>
     <body <?php body_class($class); ?>>    

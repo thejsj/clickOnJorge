@@ -102,14 +102,16 @@ module.exports = function(grunt) {
 
 		copy: {
 			images: {
-				files: [
-					// includes files within path
-					{ 
-						expand: true, 
-						src: ['app/img/**/*'], 
-						dest: 'dist/', 
-					},
-				]
+				expand: true, 
+				cwd: 'app/',
+				src: 'img/**', 
+				dest: 'dist/', 
+			},
+			fonts: {
+				expand: true, 
+				cwd: 'app/',
+				src: 'fonts/**', 
+				dest: 'dist/', 
 			}
 		}
 	});
@@ -131,7 +133,7 @@ module.exports = function(grunt) {
 
 	// Tasks
 	grunt.registerTask('default', ['build','watch']);
-	grunt.registerTask('build', ['sass', 'mustache', 'browserify', 'favicons', 'copy']);
-	grunt.registerTask('staging', ['build', 'uglify:dependencies', 'uglify:dev']);
+	grunt.registerTask('build', ['less', 'browserify', 'copy']);
+	grunt.registerTask('staging', ['build', 'uglify:dev']);
 	grunt.registerTask('production', ['build', 'uglify', 'cssmin']);
 }

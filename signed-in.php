@@ -28,7 +28,7 @@
 				<div class="line-container">
 					<h1>
 						<a href="<?php bloginfo('url'); ?>">
-							<img src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_with_clicks_50.png" alt="<?php bloginfo('name'); ?>"/>
+							<img src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_with_clicks_50.png" alt="<?php bloginfo('name'); ?>"/>
 						</a>
 					</h1>
 				</div>
@@ -43,20 +43,19 @@
 		</div><!-- End top Menu container -->
 		<div id="button-container">
 			<canvas id="main-canvas"></canvas>
-			<img id="cj-icon" src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_100.png" style="display: none;" />
-			<img id="me-1" src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_1.png" style="display: none;" />
-			<img id="me-2" src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_2.png" style="display: none;" />
-			<img id="me-3" src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_3.png" style="display: none;" />
-			<img id="me-4" src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_4.png" style="display: none;" />
-			<img id="me-5" src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_5.png" style="display: none;" />
-			<!-- <img id="s-icon" src="<?php bloginfo('template_url'); ?>/img/ss-logo/ss-icon.png" style="display: none;" /> -->
-			<img id="1-icon" src="<?php bloginfo('template_url'); ?>/img/1.png" style="display: none;" />
-			<img id="2-icon" src="<?php bloginfo('template_url'); ?>/img/2.png" style="display: none;" />
-			<img id="3-icon" src="<?php bloginfo('template_url'); ?>/img/3.png" style="display: none;" />
+			<img id="cj-icon" src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_100.png" style="display: none;" />
+			<img id="me-1" src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_1.png" style="display: none;" />
+			<img id="me-2" src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_2.png" style="display: none;" />
+			<img id="me-3" src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_3.png" style="display: none;" />
+			<img id="me-4" src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_4.png" style="display: none;" />
+			<img id="me-5" src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_5.png" style="display: none;" />
+			<img id="1-icon" src="<?php bloginfo('template_url'); ?>/dist/img/1.png" style="display: none;" />
+			<img id="2-icon" src="<?php bloginfo('template_url'); ?>/dist/img/2.png" style="display: none;" />
+			<img id="3-icon" src="<?php bloginfo('template_url'); ?>/dist/img/3.png" style="display: none;" />
 		</div>
 		<div id="instructions-dialog" title="Intstructions" class="modal">
 			<p>In <strong>20 seconds</strong> attempt to <strong>click</strong> on the <strong>black</strong> squares with my face as many times as you can.</p>
-			<img id="instructions_image" src="<?php bloginfo('template_url'); ?>/img/instructions.png" alt="Click On Jorge's Face"/>
+			<img id="instructions_image" src="<?php bloginfo('template_url'); ?>/dist/img/instructions.png" alt="Click On Jorge's Face"/>
 			<h4>Speed: <span id="stat_speed_modal"></span></h4>
 			<div id="speed-slider"></div>
 			<!-- <input type="range" name="slider-1" id="slider-1" min="0" max="100" value="50"> -->

@@ -1,8 +1,7 @@
 <div class="top not_signed_in">
 	<div class="wrapper">
-		<!-- <img src="<?php bloginfo('template_url'); ?>/img/ss-logo-500.png" alt="The Logo"/> -->
 		<div id="main_logo">
-			<img src="<?php bloginfo('template_url'); ?>/img/clickjorge/me_with_clicks.png" alt="The Logo"/>
+			<img src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_with_clicks.png" alt="The Logo"/>
 			<?php for($i = 0; $i < 15; $i++): 
 
 				$origin = rand(-20,20);// -webkit-transform-origin: <?php echo $origin . "px " . $origin . "px"
