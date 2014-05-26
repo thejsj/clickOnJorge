@@ -1,0 +1,45 @@
+{
+  "name": "clickOnJorge",
+  "version": "0.0.1",
+  "description": "ClickOnJorge is an HTML5 game where you win by clicking on Jorge's face",
+  "main": "gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thejsj/clickOnJorge.git"
+  },
+  "keywords": [
+    "html5",
+    "game",
+    "javascript",
+    "canvas"
+  ],
+  "author": "thejsj",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/thejsj/clickOnJorge/issues"
+  },
+  "homepage": "https://github.com/thejsj/clickOnJorge",
+  "dependencies": {
+    "timbre": "~13.5.3",
+    "lame": "~1.1.0",
+    "ogg": "~1.1.1",
+    "vorbis": "~0.1.0",
+    "jquery": "https://github.com/jquery/jquery/archive/1.11.1.tar.gz",
+    "jquery-mobile": "https://github.com/jquery/jquery-mobile/tarball/master/"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-watchify": "~0.1.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "browserify": "~4.1.5",
+    "grunt-browserify": "~2.1.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "browsernizr": "~1.0.2"
+  }
+}

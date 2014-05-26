@@ -503,3 +503,4 @@ function getCursorPosition(canvas, event) {
   return position;
 }
 
+module.exports = CanvasBlocks; 

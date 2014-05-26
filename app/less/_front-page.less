@@ -1,0 +1,248 @@
+/*************************
+
+Front Page
+
+*************************/
+
+.mixi-frames(@from, @to){
+	@degrees0: 0deg;
+	@degrees50: -180deg;
+	@degrees100: -359deg;
+
+	0% {
+		-webkit-transform:  rotate(@degrees0) translate(@to, @from); 
+		-moz-transform:  rotate(@degrees0) translate(@to, @from); 
+		-ms-transform:  rotate(@degrees0) translate(@to, @from); 
+		-o-transform:  rotate(@degrees0) translate(@to, @from); 
+		transform:  rotate(@degrees0) translate(@to, @from); 
+	}
+	50% {
+		-webkit-transform:  rotate(@degrees50) translate(@from, @to); 
+		-moz-transform:  rotate(@degrees50) translate(@from, @to); 
+		-ms-transform:  rotate(@degrees50) translate(@from, @to); 
+		-o-transform:  rotate(@degrees50) translate(@from, @to); 
+		transform:  rotate(@degrees50) translate(@from, @to); 
+	}
+	100% {
+		-webkit-transform:  rotate(@degrees100) translate(@to, @from); 
+		-moz-transform:  rotate(@degrees100) translate(@to, @from); 
+		-ms-transform:  rotate(@degrees100) translate(@to, @from); 
+		-o-transform:  rotate(@degrees100) translate(@to, @from); 
+		transform:  rotate(@degrees100) translate(@to, @from);
+	}
+}
+
+@from1: 100px;
+@to1: -100px;
+@-webkit-keyframes rotation1 {.mixi-frames(@from1,@to1);}
+@-moz-keyframes rotation1 {.mixi-frames(@from1,@to1);}
+@-ms-keyframes rotation1 {.mixi-frames(@from1,@to1);}
+@-o-keyframes rotation1 {.mixi-frames(@from1,@to1);}
+
+@from2: 50px;
+@to2: -50px;
+@-webkit-keyframes rotation2 {.mixi-frames(@from2, @to2);}
+@-moz-keyframes rotation2 {.mixi-frames(@from2, @to2);}
+@-ms-keyframes rotation2 {.mixi-frames(@from2, @to2);}
+@-o-keyframes rotation2 {.mixi-frames(@from2, @to2);}
+
+@from3: 55px;
+@to3: -55px;
+@-webkit-keyframes rotation3 {.mixi-frames(@from3, @to3);}
+@-moz-keyframes rotation3 {.mixi-frames(@from3, @to3);}
+@-ms-keyframes rotation3 {.mixi-frames(@from3, @to3);}
+@-o-keyframes rotation3 {.mixi-frames(@from3, @to3);}
+
+@from4: 75px;
+@to4: -75px;
+@-webkit-keyframes rotation4 {.mixi-frames(@from4, @to4);}
+@-moz-keyframes rotation4 {.mixi-frames(@from4, @to4);}
+@-ms-keyframes rotation4 {.mixi-frames(@from4, @to4);}
+@-o-keyframes rotation4 {.mixi-frames(@from4, @to4);}
+
+@from5: 125px;
+@to5: -125px;
+@-webkit-keyframes rotation5 {.mixi-frames(@from5, @to5);}
+@-moz-keyframes rotation5 {.mixi-frames(@from5, @to5);}
+@-ms-keyframes rotation5 {.mixi-frames(@from5, @to5);}
+@-o-keyframes rotation5 {.mixi-frames(@from5, @to5);}
+
+.transitionAll(@property, @duration){
+	-webkit-transition: @property @duration ease-out;
+	-moz-transition: @property @duration ease-out;
+	-o-transition: @property @duration ease-out;
+	transition: @property @duration ease-out;
+}
+
+@-webkit-keyframes spinner-rotation {
+   from {-webkit-transform: rotate(0deg);}
+   to {-webkit-transform: rotate(359deg);}
+}
+@-moz-keyframes spinner-rotation {
+   from {-moz-transform: rotate(0deg);}
+   to {-moz-transform: rotate(359deg);}
+}
+@-o-keyframes spinner-rotation {
+   from {-o-transform: rotate(0deg);}
+   to {-o-transform: rotate(359deg);}
+}
+@keyframes spinner-rotation {
+   from {transform: rotate(0deg);}
+   to {transform: rotate(359deg);}
+}
+
+.top {
+	
+	width: 100%;
+	min-height: 60%;
+	padding: 3% 0px 2% 0px;
+	min-height: 200px;
+	text-align: center; 
+	#main_logo {
+		text-align: center; 
+		width: 30%;
+		margin: 0px auto;
+		background-repeat: no-repeat;
+		//background-image: url(img/me.png);
+		background-position: center center; 
+		background-size: contain;
+		img {
+			text-align: center; 
+			width: 100%;
+			opacity: 1;
+		}
+		.icon-cursor {
+			display: none;
+			position: absolute;
+			top: 224px;
+			left: 487px;
+			text-shadow: 1px 1px 1px #777;
+  			-webkit-transform-style: preserve-3D;
+  			&.animation-1{
+  				-webkit-animation: rotation1 10s infinite linear;
+  			}
+  			&.animation-2{
+  				-webkit-animation: rotation2 10s infinite linear;
+  			}
+  			&.animation-3{
+  				-webkit-animation: rotation3 10s infinite linear;
+  			}
+  			&.animation-4{
+  				-webkit-animation: rotation4 10s infinite linear;
+  			}
+  			&.animation-5{
+  				-webkit-animation: rotation5 10s infinite linear;
+  			}
+			&.color-1, &.color-3 {
+				color: #000;
+			}	
+			&.color-2 {
+				color: #fff;
+			}
+		}
+	}	
+	h1, h2, h3, h4 {
+		color: #fff;
+		text-shadow: 1px 1px 2px #000;
+		text-align: center; 
+		margin: 0.2em;
+		margin-bottom: 0em;
+		line-height: 0.9em;
+	}
+	h1 {
+		font-size: 4em;
+	}
+	h3 {
+		font-size: 3em;
+	}
+	h4 {
+		font-size: 2em;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-weight: 200;
+	}
+	.plugin #providers .provider #button_facebook {
+		background-color: red;
+	}
+	#facebook_link, iframe {
+		width: 165px;
+		text-align: center; 
+		display: block;
+		display: inline-block;
+		margin: 10px auto 0px;
+		background-color: #fff;
+		//background-image: url(img/login-button-facebook-custom-3.png);
+		background-repeat: no-repeat;
+		padding: 15px 45px;
+		background-size: 100%;
+		color: #5BE9C1;
+		text-decoration: none;
+		font-weight: 300;
+		font-size: 16px; 
+		text-shadow: 1px 1px 1px #ccc;
+		border-radius: 5px;
+		box-shadow: 1px 1px 3px #999;
+		.text {
+			margin-bottom: 10px;
+			display: inline-block;
+		}
+		#iframe_container {
+			height: 70px;
+			width: 84px;
+			overflow: hidden;
+			background-color: #fff;
+			margin: 0px auto;
+			font-size: 0px;
+			margin-top: -24px;
+			iframe {
+				width: 200px !important;
+			}
+		}
+		&:hover {
+			content: "Yeah, do it!";
+			box-shadow: 1px 1px 4px #777;
+		}
+		&:focus {
+			background-color: rgba(0,0,0,0.5);
+		}
+		img {
+			width: 100%;
+		}
+	}
+	a {
+		color: #000;
+		text-decoration: none;
+		&:hover {
+			color: #5BE9C1;
+		}
+	}
+	p {
+		text-align: center;
+		font-size: 14px;
+		color: #fff;
+		text-shadow: 1px 1px #bbb;
+		margin: 0px auto;
+		margin-top: 10px;
+		max-width: 300px;
+		&.small {
+			font-size: 10px;
+			font-weight: bold;
+		}
+		&.description {
+			color: #fff;
+			font-size: 1.1em;
+			text-align: center; 
+			margin: 0.1em auto;
+			margin-top: 0.4em;
+			text-shadow: 1px 1px #aaa;
+			text-transform: uppercase;
+			letter-spacing: 0.3em;
+			font-weight: 300;
+		}
+		.name {
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+		}
+	}
+
+}

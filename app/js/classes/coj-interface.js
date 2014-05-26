@@ -300,3 +300,5 @@ jQuery.extend(
 		hide: "fade" 
 	}
 );
+
+module.exports = GameInterface; 

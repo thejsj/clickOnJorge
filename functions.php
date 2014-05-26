@@ -27,15 +27,10 @@ Notice: Undefined index: action in /home/thejsj/public_html/2013/shareshare/wp-c
 // jQuery
 wp_enqueue_script( 'jquery-ui-dialog',  array( 'jquery' ) );
 wp_enqueue_script( 'jquery-ui-slider',  array( 'jquery' ) );
-wp_enqueue_script( 'jquery-touch',  get_bloginfo('template_url') . '/js/jquery-touchpunch.min.js', array('jquery', 'jquery-ui-slider', 'jquery-ui-dialog'), false,true);
+wp_enqueue_script( 'jquery-touch',  get_bloginfo('template_url') . '/app/js/libs/jquery-touchpunch.min.js', array('jquery', 'jquery-ui-slider', 'jquery-ui-dialog'), false,true);
 
 // embed the javascript file that makes the AJAX request
-wp_enqueue_script( 'timbre', get_bloginfo('template_url') . '/js/timbre.js', array('jquery'), false,true);
-wp_enqueue_script( 'canvas-class', get_bloginfo('template_url') . '/js/coj-canvas.js', array('jquery'), false,true);
-wp_enqueue_script( 'interface-class', get_bloginfo('template_url') . '/js/coj-interface.js', array( 'jquery','canvas-class'), false,true);
-wp_enqueue_script( 'game-class', get_bloginfo('template_url') . '/js/coj-game.js', array('jquery','canvas-class','interface-class'),false, true);
-wp_enqueue_script( 'sound-class', get_bloginfo('template_url') . '/js/coj-sound.js', array('timbre'), false, true);
-wp_enqueue_script( 'main', get_bloginfo('template_url') . '/js/coj-main.js', array('jquery','game-class','canvas-class','interface-class', 'sound-class'), false,true);
+wp_enqueue_script( 'main', get_bloginfo('template_url') . '/dist/js/footer.js', array('jquery','jquery-touch'), false,true);
  
 // declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
 wp_localize_script( 'main', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );

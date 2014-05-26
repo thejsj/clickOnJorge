@@ -97,3 +97,5 @@ var ClickOnJorgeGameInstance= function() {
         return this.jorgeClicks + "/" + this.clicks;
     }
 }
+
+module.exports = ClickOnJorgeGameInstance; 

@@ -1,0 +1,162 @@
+/*************************
+
+Icons
+
+*************************/
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'icomoon2';
+	src:url('fonts/icomoon2.eot');
+	src:url('fonts/icomoon2.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon2.woff') format('woff'),
+		url('fonts/icomoon2.ttf') format('truetype'),
+		url('fonts/icomoon2.svg#icomoon2') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-user, .icon-list, .icon-refresh, .icon-reload, .icon-list-2, .icon-user-2, .icon-layers-alt, .icon-bars, .icon-bars-alt, .icon-loop, .icon-grid, .icon-star, .icon-redo, .icon-user-3, .icon-user-4, .icon-user-5, .icon-spinner, .icon-list-3, .icon-list-4, .icon-numbered-list, .icon-arrow-up-right {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.icon-cursor {
+	font-family: 'icomoon2';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-cursor:before {
+	content: "\e000";
+}
+.icon-user:before {
+	content: "\e000";
+}
+.icon-list:before {
+	content: "\e001";
+}
+.icon-refresh:before {
+	content: "\e002";
+}
+.icon-reload:before {
+	content: "\e003";
+}
+.icon-list-2:before {
+	content: "\e004";
+}
+.icon-user-2:before {
+	content: "\e005";
+}
+.icon-layers-alt:before {
+	content: "\e006";
+}
+.icon-bars:before {
+	content: "\e007";
+}
+.icon-bars-alt:before {
+	content: "\e008";
+}
+.icon-loop:before {
+	content: "\e009";
+}
+.icon-grid:before {
+	content: "\e00a";
+}
+.icon-star:before {
+	content: "\e00b";
+}
+.icon-redo:before {
+	content: "\e00c";
+}
+.icon-user-3:before {
+	content: "\e00d";
+}
+.icon-user-4:before {
+	content: "\e00e";
+}
+.icon-user-5:before {
+	content: "\e00f";
+}
+.icon-spinner:before {
+	content: "\e010";
+}
+.icon-list-3:before {
+	content: "\e011";
+}
+.icon-list-4:before {
+	content: "\e012";
+}
+.icon-numbered-list:before {
+	content: "\e013";
+}
+.icon-arrow-up-right:before {
+	content: "\e014";
+}
+
+
+
+/*************************
+
+ Basic Layout 
+
+*************************/
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: 'Nunito','Frutiger', Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
+	background-color: #5BE9C1; /* #FFFF66; */ /* #ffff00; */
+	font-size: 14px;
+	background-image: url("img/background.png");
+	background-repeat: repeat;
+	.wrapper {
+		max-width: 900px; 
+		display: block;
+		margin: 0px auto;
+	}
+}
+

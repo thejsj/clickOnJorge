@@ -1,0 +1,161 @@
+
+
+/*************************
+
+Playing Mode
+
+*************************/
+
+.top_menu_container {
+	width: 100%;
+	background-color: #fff;
+	color: #999;
+	border-bottom: 1px solid #aaa;
+	z-index: 50;
+	position: absolute;
+}
+
+
+.top_menu {
+
+	.line-container {
+		/*border-right: solid 1px #141414;*/
+		display: inline-block;
+	}
+	h1 {
+		font-size: 1.5em;
+		text-shadow: 1px 1px 1px #aaa;
+		color: #999;
+		margin: 0px;
+		// background-color: #333;
+		padding: 5px 16px;
+		display: inline-block;
+		/*border-right: solid 1px #333;*/
+		height: 42px;
+		width: 37px;
+		display: block;
+		margin-top: 3px;
+		margin-left: 3px;
+		border-radius: 2px 2px 0px 0px;
+	    img {
+		    .transitionAll(all, 500ms);
+			height: 42px;
+			width: auto !important;
+			&:hover {
+		    	-webkit-transform:rotate(360deg);
+			    -moz-transform:rotate(360deg); 
+			    -o-transform:rotate(360deg);
+			    transform:rotate(360deg);
+		    }
+		}
+	}
+	a:link, a:visited {
+		color: #999;
+	}
+	a:hover {
+		color: #5BE9C1;
+	}
+	.right-top-container {
+		float: right;
+		padding: 10px;
+		color: #999;
+		font-size: 12px;
+		.mobile-menu {
+			font-size: 18px;
+			display: block;
+			padding: 8px;
+			font-size: 18px;
+		}
+		#menu-container {
+			position: absolute; // Mobile
+			top: 56px; // Mobile
+			right: 0px; // Mobile
+			.transitionAll(height, 300ms);
+			height: 0px;
+			overflow: hidden;
+			&.uncollapsed {
+				height: 160px;
+			}
+			a {
+				text-decoration: none;
+				padding: 6px 7px; // Desktop
+				padding: 10px 12px; // Mobile
+				font-size: 16px;
+				display: inline-block; // Desktop
+				display: block;
+				border: solid 1px #aaa;// Mobile
+				border-top: 0px; // Mobile
+				background-color: #fff;
+				&:first-child {
+					border-top: 1px;// Mobile
+				}
+				.text{
+					width: 0px;
+					width: 90px;
+					display: inline-block;
+					font-family: sans-serif;
+					text-transform: uppercase;
+					letter-spacing: 0.1em;
+					font-size: 10px;
+					overflow: hidden;
+					padding-left: 5px;
+					padding-bottom: 2px;
+				}
+			}
+		}
+	}
+	.line-container {
+		float: left;
+	}
+	.left-top-container {
+		margin-left: 5px;
+		display: block;
+		height: 0px;
+		overflow: hidden;
+		float: left;
+		border-bottom: 1px solid #fff;
+		position: absolute;
+		margin-left: 77px;
+		.transitionAll(height, 300ms);
+		&.activated {
+			.transitionAll(height, 300ms);
+			height: 55px;
+			border-color: #aaa;
+		}
+	}
+	.game_stat {
+		display: none;
+		font-size: 9px;
+		// border-right: 1px solid #eee;
+		padding: 4px 8px 13px;
+		min-width: 41px;
+		text-align: center;
+		margin-top: 4px;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		// box-shadow: 0px 0px 1px #bbb;
+		height: 31px;
+		border-radius: 4px;
+		background: #f2f2f2; //#5BE9C1; //#666;
+		&#game_score, &#game_time,  {
+			display: inline-block;
+		}
+		&.time_warning {
+			background: #c22;
+			color: #900;
+			.transitionAll(all, 2500ms);
+			.stat_num  {
+				color: #f33;
+				text-shadow: 0px 0px 1px #f00;
+				
+			}
+		}
+		.stat_num {
+			display: block;
+			font-size: 21px;
+			color: #000; //  #ccc;
+			text-shadow: 0px 0px 1px #bbb;
+		}
+	}
+
+}

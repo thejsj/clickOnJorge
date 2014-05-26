@@ -1,3 +1,5 @@
+var T = require('timbre');
+
 var GameSounds = function(){
 
 	this.init = function(){
@@ -79,3 +81,5 @@ var GameSounds = function(){
 	}
 
 }
+
+module.exports = GameSounds; 
