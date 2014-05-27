@@ -220,7 +220,7 @@ var CanvasBlocks = function(game, sounds){
           animate(that);
         }
         else {
-          if(playSound){ this.sounds.startGame() };
+          if(playSound){ that.sounds.startGame() };
           if(callback !== undefined){
             callback();
           }
