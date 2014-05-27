@@ -74,7 +74,6 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 	var currentGame = new ClickOnJorgeGameInstance();
 	var gameInterface = new GameInterface(currentGame);
 	var sounds = new GameSounds(); 
-	console.log(this.sounds);
 	var blocks = new CanvasBlocks(currentGame, sounds);
 	var drawingLoopTimer;
 	var updateLoopTimer;
