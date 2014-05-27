@@ -82,4 +82,6 @@ var GameSounds = function(){
 
 }
 
+console.log(GameSounds);
+
 module.exports = GameSounds; 
