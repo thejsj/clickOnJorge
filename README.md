@@ -1,17 +1,33 @@
 # Click On Jorge
 
-![ScreenShot](/img/instructions.png)
+![ScreenShot](app/img/instructions.png)
 
 Perhaps the best game ever invented, 'Click On Jorge' is the opportunity to continually click on the most handsome man in the world. In 20 seconds, try to click on my face as many times as possible and get a your name in the high scores. It hurts my face, but it's worth it.
+
+## Setup
+
+First, install all node modules:
+
+```
+npm install 
+```
+
+To build all less, js, and copy assets:
+
+```
+grunt build
+```
 
 ## Depdencies
 
 - Timbre.js
 - jQuery.js
-- jQuery-mobile.js
 - jQuery-touchpunch.min.js
 - less.js
 
 ## Class Structure
 
-
+- Game Class - Controls score, game timing, etc.
+- Canvas Class(game_instance, sound_instance) - Controls user interaction with the canvas element
+- Interface Class(game_instance) - Controls top menu, including all stats
+- Sound Class - Controls all sounds through a timbre.js instance
