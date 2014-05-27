@@ -213,7 +213,10 @@ var CanvasBlocks = function(game, sounds){
           that.blocks[i].animationHighlight = 0;
         }
         if(that.animations > 0){
-          if(playSound){ this.sounds.animationSound() };
+          if(playSound){ 
+            console.log(this.sounds);
+            this.sounds.animationSound() 
+          };
           that.animations--;
           animate(that);
         }
