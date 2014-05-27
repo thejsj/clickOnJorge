@@ -31,3 +31,5 @@ grunt build
 - Canvas Class(game_instance, sound_instance) - Controls user interaction with the canvas element
 - Interface Class(game_instance) - Controls top menu, including all stats
 - Sound Class - Controls all sounds through a timbre.js instance
+
+footer.js orchestrates the interactions between these instances through event listeners, triggered on the document object. Every time I do this, it sounds a bit hacky, but it has always served me well. 

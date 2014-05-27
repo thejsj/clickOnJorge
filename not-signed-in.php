@@ -1,16 +1,7 @@
 <div class="top not_signed_in">
 	<div class="wrapper">
 		<div id="main_logo">
-			<img src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_with_clicks.png" alt="The Logo"/>
-			<?php for($i = 0; $i < 15; $i++): 
-
-				$origin = rand(-20,20);// -webkit-transform-origin: <?php echo $origin . "px " . $origin . "px"
-				?>
-				<div 
-					class="icon-cursor color-<?php echo rand(1, 3); ?> animation-<?php echo rand(1, 5); ?>"
-					style=" font-size: <?php echo rand(12,36); ?>px">
-				</div>
-			<?php endfor; ?>			
+			<img src="<?php bloginfo('template_url'); ?>/dist/img/clickjorge/me_with_clicks.png" alt="The Logo"/>	
 		</div>
 		<h1><?php bloginfo('name'); ?></h1>
 		<p class="description"><?php bloginfo('description'); ?></p>
@@ -24,7 +15,6 @@
 			</a>
 		</span>
 		<p>Yeah, sorry but you'll need facebook for this!</p>
-
 		<!--<?php $highest_score = get_high_scores(true); ?>
 		<br/>
 		<br/>
@@ -35,7 +25,5 @@
 		<p><a href="<?php echo get_permalink(198); ?>" title="FAQs">
 			<span class="text">See High Scores</span>
 		</a></p>-->
-
-
 	</div>
 </div>

@@ -4,7 +4,6 @@ Template Name: High Scores Page
 */
 ?>
 <?php get_header(); ?>
-        
        	<a href="<?php bloginfo('url'); ?>">
        		<h1 id="header-logo"><?php bloginfo('name'); ?></h1>
        	</a>

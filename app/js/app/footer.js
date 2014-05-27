@@ -64,8 +64,8 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 	];
 
 	for(i in classes){
-		if(jQuery("body").hasClass(classes[i])){
-			jQuery("#site-unavailable-message").show();
+		if($("body").hasClass(classes[i])){
+			$("#site-unavailable-message").show();
 		}
 	}
 
@@ -102,7 +102,7 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 	******************************/ 
 
 	// On Game Start
-	jQuery(document).on("gameStart",function(){
+	$(document).on("gameStart",function(){
 		// Reset time started, scores, random key, etc
 		currentGame.startNewGame();
 		// Bring up the scores already populated
@@ -130,8 +130,8 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 					}
 					else {
 						try {
-							jQuery( "body" ).trigger("gameEnd");
-							jQuery( "body" ).trigger("timeRanOut");
+							$( "body" ).trigger("gameEnd");
+							$( "body" ).trigger("timeRanOut");
 						}
 						catch(err){
 							console.log("trying to dispatchEvent")
@@ -145,20 +145,14 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 
 
 	// On Canvas Click
-	jQuery(document).on("canvasClicked",function(){
+	$(document).on("canvasClicked",function(){
 		// Add to # of clicks executed by the user
 		currentGame.increaseClicks();
 	});
 
 
-	// On Highlithed Block Change
-	jQuery(document).on("highlithedBlockChange",function(){
-		
-	});
-
-
 	// On Game End
-	jQuery(document).on("gameEnd", function(event){
+	$(document).on("gameEnd", function(event){
 		gameInterface.stopGame(currentGame.jorgeClicks, currentGame.calculateScore());
 		interval_activated = false;
 		// Stop updating time and changing higlighted blocks
@@ -172,7 +166,7 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 		blocks.turnOff();
 	});
 
-	jQuery(document).on("timeRanOut", function(event){
+	$(document).on("timeRanOut", function(event){
 		sounds.lose();
 		// Animate the blocks one time
 		blocks.animateBlocksFromRightToLeft(function(){
@@ -185,7 +179,7 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 		}, 0, false, false);
 	});
 
-	jQuery(document).on('game5secondsLeft', function(){
+	$(document).on('game5secondsLeft', function(){
 		if(interval_activated){
 			sounds.gameAlmostDone();
 			for(var i = 1; i < 5; i++){
@@ -200,7 +194,7 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 	});
 
 	document.onkeypress = function(){
-		jQuery( "body" ).trigger("gameEnd");
+		$( "body" ).trigger("gameEnd");
 	};
 
 
@@ -238,11 +232,11 @@ var CanvasBlocks             = require('../classes/coj-canvas');
 		});
 	};
 
-	jQuery(document).ready(function(){
+	$(document).ready(function(){
 		initGame();
 		// For the Mobile Menu
-		jQuery("a.mobile-menu").click(function(){
-			jQuery("#menu-container").toggleClass('uncollapsed');
+		$("a.mobile-menu").click(function(){
+			$("#menu-container").toggleClass('uncollapsed');
 		});
 	});	
 
