@@ -214,8 +214,7 @@ var CanvasBlocks = function(game, sounds){
         }
         if(that.animations > 0){
           if(playSound){ 
-            console.log(this.sounds);
-            this.sounds.animationSound() 
+            that.sounds.animationSound() 
           };
           that.animations--;
           animate(that);
